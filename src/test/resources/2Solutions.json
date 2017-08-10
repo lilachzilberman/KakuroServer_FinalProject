@@ -1,0 +1,5 @@
+[
+    ["X", {"down":4}, {"down":4}],
+    [{"right":4}, null, null],
+    [{"right":4}, null, null]
+]

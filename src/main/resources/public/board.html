@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf8">
+<link rel="stylesheet" href="board.css">
+<textarea id="input">
+[
+    ["X", {"down": 23}, {"down": 30}, "X", "X", {"down": 27}, {"down": 12}, {"down": 16}],
+    [{"right": 16}, null, null, "X", {"down": 17, "right": "24"}, null, null, null],
+    [{"right": 17}, null, null, {"down": 15, "right": "29"}, null, null, null, null],
+    [{"right": 35}, null, null, null, null, null, {"down": 12}, "X"],
+    ["X", {"right": 7}, null, null, {"down": 7, "right": 8}, null, null, {"down": 7}],
+    ["X", {"down": 11}, {"down": 10, "right": 16}, null, null, null, null, null],
+    [{"right": 21}, null, null, null, null, {"right": 5}, null, null],
+    [{"right": 6}, null, null, null, "X", {"right": 3}, null, null]
+]
+</textarea>
+<div id="outputContainer">
+    <div id="output">
+    </div>
+    <div id="outputSolved">
+    </div>
+</div>
+<script type="text/javascript">
+var $ = document.querySelector.bind(document);
+var $$ = document.querySelectorAll.bind(document);
+$("#input").addEventListener("change", handleInput);
+$("#input").addEventListener("keyup", handleInput);
+
+updateAndSolve($("#input").value);
+function handleInput(event) {
+    updateAndSolve(event.target.value);
+}
+
+function updateAndSolve(boardJson) {
+    updateBoardFromJson(boardJson);
+    const handleError = e => $("#outputSolved").innerHTML = `<div class="error">${e.stack || e}</div>`;
+    fetch("./solveFromJson", {method: "POST", body: boardJson, headers: {"content-type": "application/json"}})
+        .then(res => {
+            if (res.status >= 400 && res.status < 600) {
+                res.text().then(text =>  {
+                    handleError(res.statusText + "\r\n" + text);
+                });
+                return;
+            }
+            return res.json();
+        })
+        .then(result => {
+            if (result) {
+                updateBoardFromJson(JSON.stringify(result.solved || result.status), "#outputSolved");
+                if (result.status === "SOLVED_DIFFERENTLY") {
+                    $("#outputSolved").classList.add("status--solved-differently");
+                } else {
+                    $("#outputSolved").classList.remove("status--solved-differently");
+                }
+            }
+        })
+        .catch(handleError);
+}
+function updateBoardFromJson(boardJson, outputSelector = "#output") {
+    try {
+        $(outputSelector).innerHTML = renderBoard(JSON.parse(boardJson));
+    } catch (e) {
+        $(outputSelector).innerHTML = `<div class="error">${e.stack || e}</div>`
+    }
+}
+function renderBoard(boardRows) {
+    if (Array.isArray(boardRows)) {
+        return `
+            <table class="board">
+                ${boardRows.map(renderBoardRow).join("")}
+            </table>
+        `;
+    } else {
+        return boardRows;
+    }
+}
+function renderBoardRow(rowCells) {
+    return `
+        <tr>
+            ${rowCells.map(renderBoardCell).join("")}
+        </tr>
+    `;
+}
+function renderBoardCell(cell) {
+    var classNames = [], contents = "";
+    if (typeof cell === 'string' && cell.toUpperCase() === "X") {
+        classNames.push("black");
+    } else if (typeof cell === 'object' && cell) {
+        classNames.push("split");
+        contents = renderBoardCellSum(cell, "down") +
+            renderBoardCellSum(cell, "right");
+    } else if (!cell) {
+        classNames.push("white");
+    } else {
+        classNames.push("value");
+        contents = cell;
+        if (!Number.isInteger(Number.parseFloat(contents))) {
+            throw new Error(`Expected integer, split object or "X" but found "${contents}"`);
+        }
+    }
+    return `<td class="cell ${classNames.map(c => `cell--${c}`).join(" ")}">${contents}</td>`;
+}
+function renderBoardCellSum(cell, key) {
+    var classNames = [], contents = "";
+    if (!cell[key]) {
+        classNames.push("black")
+    } else {
+        classNames.push("value");
+        contents = cell[key];
+        if (!Number.isInteger(Number.parseFloat(contents))) {
+            throw new Error(`Expected integer or empty sum but found "${contents}"`);
+        }
+    }
+    return `<div class="sum sum__${key} ${classNames.map(c => `sum__${key}--${c} sum--${c}`).join(" ")}">${contents}</div>`
+}
+</script>

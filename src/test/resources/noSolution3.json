@@ -1,0 +1,12 @@
+[
+    ["X", "X", "X", "X", {"down":28}, {"down":6}, "X", "X", "X", "X"],
+    ["X", {"down":3}, {"down":17}, {"right":8}, null, null, "X", "X", "X", "X"],
+    [{"right":9}, null, null, {"down":30, "right":6}, null, null, {"down":41}, "X", {"down":24}, {"down":3}],
+    [{"right":33}, null, null, null, null, null, null, {"down":30, "right":9}, null, null],
+    ["X", "X", {"down":23, "right":9}, null, null, {"right":23}, null, null, null, null],
+    ["X", {"down":3, "right":19}, null, null, null, {"right":18}, null, null, null, "X"],
+    [{"right":17}, null, null, null, null, {"down":6, "right":15}, null, null, {"down":17}, {"down":4}],
+    [{"right":10}, null, null, {"right":10}, null, null, null, null, null, null],
+    ["X", "X", "X", "X", {"right":6}, null, null, {"right":11}, null, null],
+    ["X", "X", "X", "X", {"right":12}, null, null, "X", "X", "X"]
+]

@@ -1,0 +1,2 @@
+tensorboard --logdir /home/alon/PycharmProjects/finalProject/graphs/
+/usr/bin/python3.5 /home/alon/PycharmProjects/finalProject/main.py 

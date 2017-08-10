@@ -1,0 +1,139 @@
+{
+  "input" : [ [ "X", "X", "X", "X", {
+    "down" : 9
+  }, {
+    "down" : 12
+  }, "X", {
+    "down" : 12
+  }, {
+    "down" : 37
+  }, "X" ], [ "X", "X", {
+    "down" : 37
+  }, {
+    "down" : 8,
+    "right" : 3
+  }, null, null, {
+    "down" : 8,
+    "right" : 15
+  }, null, null, {
+    "down" : 9
+  } ], [ "X", {
+    "down" : 11,
+    "right" : 43
+  }, null, null, null, null, null, null, null, null ], [ {
+    "right" : 14
+  }, null, null, null, {
+    "down" : 6,
+    "right" : 11
+  }, null, null, {
+    "down" : 10,
+    "right" : 4
+  }, null, null ], [ {
+    "right" : 10
+  }, null, null, {
+    "down" : 9,
+    "right" : 3
+  }, null, null, {
+    "down" : 7,
+    "right" : 4
+  }, null, null, "X" ], [ "X", {
+    "right" : 15
+  }, null, null, null, {
+    "down" : 26,
+    "right" : 13
+  }, null, null, null, {
+    "down" : 16
+  } ], [ "X", {
+    "down" : 3,
+    "right" : 9
+  }, null, null, {
+    "down" : 5,
+    "right" : 12
+  }, null, null, {
+    "down" : 10,
+    "right" : 12
+  }, null, null ], [ {
+    "right" : 9
+  }, null, null, {
+    "down" : 14,
+    "right" : 3
+  }, null, null, {
+    "down" : 3,
+    "right" : 14
+  }, null, null, null ], [ {
+    "right" : 40
+  }, null, null, null, null, null, null, null, null, "X" ], [ "X", {
+    "right" : 10
+  }, null, null, {
+    "right" : 8
+  }, null, null, "X", "X", "X" ] ],
+  "solved" : [ [ "X", "X", "X", "X", {
+    "down" : 9
+  }, {
+    "down" : 12
+  }, "X", {
+    "down" : 12
+  }, {
+    "down" : 37
+  }, "X" ], [ "X", "X", {
+    "down" : 37
+  }, {
+    "down" : 8,
+    "right" : 3
+  }, 2, 1, {
+    "down" : 8,
+    "right" : 15
+  }, 9, 6, {
+    "down" : 9
+  } ], [ "X", {
+    "down" : 11,
+    "right" : 43
+  }, 4, 6, 7, 5, 1, 3, 9, 8 ], [ {
+    "right" : 14
+  }, 7, 5, 2, {
+    "down" : 6,
+    "right" : 11
+  }, 4, 7, {
+    "down" : 10,
+    "right" : 4
+  }, 3, 1 ], [ {
+    "right" : 10
+  }, 4, 6, {
+    "down" : 9,
+    "right" : 3
+  }, 1, 2, {
+    "down" : 7,
+    "right" : 4
+  }, 3, 1, "X" ], [ "X", {
+    "right" : 15
+  }, 9, 1, 5, {
+    "down" : 26,
+    "right" : 13
+  }, 4, 7, 2, {
+    "down" : 16
+  } ], [ "X", {
+    "down" : 3,
+    "right" : 9
+  }, 1, 8, {
+    "down" : 5,
+    "right" : 12
+  }, 9, 3, {
+    "down" : 10,
+    "right" : 12
+  }, 5, 7 ], [ {
+    "right" : 9
+  }, 2, 7, {
+    "down" : 14,
+    "right" : 3
+  }, 1, 2, {
+    "down" : 3,
+    "right" : 14
+  }, 1, 4, 9 ], [ {
+    "right" : 40
+  }, 1, 3, 6, 4, 8, 2, 9, 7, "X" ], [ "X", {
+    "right" : 10
+  }, 2, 8, {
+    "right" : 8
+  }, 7, 1, "X", "X", "X" ] ],
+  "status" : "SOLVED"
+}

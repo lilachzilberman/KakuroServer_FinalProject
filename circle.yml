@@ -1,0 +1,4 @@
+test:
+  post:
+    - ./gradlew distZip && cp build/distributions/* $CIRCLE_ARTIFACTS
+    - ./gradlew build && cp build/libs/* $CIRCLE_ARTIFACTS
